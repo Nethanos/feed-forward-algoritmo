@@ -8,6 +8,8 @@ function setup(){
     nn = new RedeNeural(2, 3, 1);
 
     // XOR Problem
+
+    //Dados
     dataset = {
         inputs:
             [[1, 1],
@@ -25,7 +27,7 @@ function setup(){
 
 function draw(){
     if (train) {
-        for (var i = 0; i < 10000; i++) {
+        for (var i = 0; i < 4000; i++) {
             var index = floor(random(4));
             nn.treinar(dataset.inputs[index], dataset.outputs[index]);
         }

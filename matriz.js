@@ -5,6 +5,7 @@ class Matriz {
 
         this.dados = [];
 
+        //Transformando o arrayem Matriz no construtor
         for(let i = 0; i<linhas; i++){
             let arr = [];
             for(let j =0; j<colunas; j++){
@@ -15,7 +16,7 @@ class Matriz {
     }
 
 
-
+    //AUXILIARES
     static arrayToMatriz(arr){
         let matriz = new Matriz(arr.length, 1);
         matriz.map((el, i, j) => {
@@ -35,7 +36,6 @@ class Matriz {
     }
 
 
-
     printar(){
         console.table(this.dados);
     }
@@ -45,6 +45,8 @@ class Matriz {
             return Math.random()* 2 -1;
         });
     }
+
+    //AUXILIARES
 
     static map(matriz, func){
 
@@ -59,8 +61,9 @@ class Matriz {
         return matrizStatic;
     }
 
-     map(func){
 
+    //Override do map do JS, passando uma funcao como arg
+     map(func){
         this.dados = this.dados.map((arr, i) => {
             return arr.map((numero, j) => {
                 return func(numero, i, j);
@@ -71,13 +74,13 @@ class Matriz {
     }
 
 
-    static transposicao(A){
-        let matriz = new Matriz(A.colunas, A.linhas);
+    static transposicao(matriz){
+        let matrizRetorno = new Matriz(matriz.colunas, matriz.linhas);
     
-        matriz.map((num, i,j) => {
-            return A.dados[j][i];
+        matrizRetorno.map((num, i,j) => {
+            return matriz.dados[j][i];
         });
-        return matriz;
+        return matrizRetorno;
     }
 
 
@@ -101,10 +104,6 @@ class Matriz {
         return matrizAuxiliar;
     }
 
-
-  
-
-
     static add(matrizA, matrizB){
         let matrizAuxiliar = new Matriz(matrizA.linhas, matrizA.colunas);
        
@@ -118,7 +117,6 @@ class Matriz {
 
     static subtrair(matrizA, matrizB){
         let matrizAuxiliar = new Matriz(matrizA.linhas, matrizA.colunas);
-       
         matrizAuxiliar.map((numero, i, j) => {
             return matrizA.dados[i][j] - matrizB.dados[i][j];
         });

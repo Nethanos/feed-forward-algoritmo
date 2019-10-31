@@ -8,6 +8,7 @@ function dsigmoide(x) {
 }
 
 class RedeNeural {
+
     constructor(e_neuronios, o_neuronios, s_neuronios) {
         this.e_neuronios = e_neuronios;
         this.o_neuronios = o_neuronios;
@@ -127,7 +128,6 @@ class RedeNeural {
         saida =  Matriz.matrizToArray(saida);
 
         return saida;
-
     }
 
 
