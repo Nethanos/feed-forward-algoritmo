@@ -15,6 +15,15 @@ class Matriz {
     }
 
 
+
+    static arrayToMatriz(arr){
+        let matriz = new Matriz(arr.length, 1);
+        matriz.map((el, i, j) => {
+            return arr[i];
+        });
+    }
+
+
     printar(){
         console.table(this.dados);
     }
@@ -25,7 +34,21 @@ class Matriz {
         });
     }
 
-    map(func){
+    static map(matriz, func){
+
+        let matriz = new Matriz(A.linhas, B.linhas)
+
+        matriz.dados = matriz.dados.map((arr, i) => {
+            return arr.map((numero, j) => {
+                return func(numero, i, j);
+            })
+        })
+
+        return matriz;
+    }
+
+     map(func){
+
         this.dados = this.dados.map((arr, i) => {
             return arr.map((numero, j) => {
                 return func(numero, i, j);
@@ -34,6 +57,7 @@ class Matriz {
 
         return this;
     }
+
 
     static add(matrizA, matrizB){
         let matrizAuxiliar = new Matriz(matrizA.linhas, matrizA.colunas);
@@ -57,7 +81,7 @@ class Matriz {
         console.log('Matriz B:', B.dados);
         matrizAuxiliar.map((numero, i,j) => {
             let soma = 0;
-            for(let k = 0; k<B.linhas; k++) {
+            for(let k = 0; k<A.colunas; k++) {
                 let elm1 = A.dados[i][k];
                 let elm2 = B.dados[k][j];
                 return soma += elm1 * elm2;   
